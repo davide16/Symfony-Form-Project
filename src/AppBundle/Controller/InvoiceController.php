@@ -28,8 +28,8 @@ class InvoiceController extends Controller
             $entityManager->persist($invoice);
             $entityManager->flush();
 
-            // ... do any other work - like sending them an email, etc
-            // maybe set a "flash" success message for the user
+            // redirect to next part of the form to create invoice rows
+           
 
             return $this->redirectToRoute('create_invoice_rows'); 
         }
