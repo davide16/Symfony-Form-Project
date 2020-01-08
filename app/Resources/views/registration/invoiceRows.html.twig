@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+{# app/Resources/views/registration/invoiceRows.html.twig #}
+{{ form_start(form) }}
+    <br>
+    {{ form_row(form.description) }}
+    {{ form_row(form.quantity) }}
+    <div>
+    {{ form_label(form.amount) }}
+    {{ form_errors(form.amount) }}
+    {{ form_widget(form.amount, {'attr': {'class': 'task_field'}}) }}
+    </div>
+    <div>
+    {{ form_label(form.vat_amount) }}
+    {{ form_errors(form.vat_amount) }}
+    {{ form_widget(form.vat_amount, {'attr': {'class': 'task_field'}}) }}
+    </div>
+    {{ form_row(form.total_withvat) }}
+
+
+    <p> SELECT YOUR INVOICE ID: IT IS THE LAST ON THE LIST. THEN CLICK THE ADD BUTTON TO SAVE DATA INTO DATABASE </p>
+    <button type="submit">Add invoice rows!</button>
+{{ form_end(form) }}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+// I used jQuery 'keyup' to trigger the computation as the user type
+$('.task_field').keyup(function () {
+
+    // initialize the sum (total price) to zero
+    var sum = 0;
+
+    // we use jQuery each() to loop through all the textbox with 'task_field' class
+    // and compute the sum for each loop
+    $('.task_field').each(function() {
+        sum += Number($(this).val());
+    });
+
+    // set the computed value to 'invoice_rows_total_withvat' textbox
+    $('#invoice_rows_total_withvat').val(sum);
+
+});
+</script>
+</html>
