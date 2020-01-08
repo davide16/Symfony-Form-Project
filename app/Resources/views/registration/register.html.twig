@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+{# app/Resources/views/registration/register.html.twig #}
+{{ form_start(form) }}
+    {{ form_row(form.invoice_date) }}
+    {{ form_row(form.invoice_num) }}
+    {{ form_row(form.id_client) }}
+
+    <button type="submit">Create Invoice!</button>
+{{ form_end(form) }}
+</html>
